@@ -1,0 +1,324 @@
+2024-11-09 14:56:44,101 - INFO - Initializing RAG components...
+2024-11-09 14:56:44,101 - INFO - Loading embedding model...
+2024-11-09 14:56:44,128 - INFO - Use pytorch device_name: mps
+2024-11-09 14:56:44,128 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2024-11-09 14:56:45,584 - INFO - Setting up ChromaDB...
+2024-11-09 14:56:45,600 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-11-09 14:56:45,670 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2024-11-09 14:56:46,539 - INFO - RAG system initialized successfully
+2024-11-09 14:56:46,539 - INFO - 
+Starting processing of 20 documents
+2024-11-09 14:56:46,542 - INFO - 
+Processing document: WMiddlefield_2120 2024.02.15 HODecision_Redacted.pdf
+2024-11-09 14:56:46,542 - INFO - Extracting text...
+2024-11-09 14:56:46,619 - INFO - Extracted 63306 characters of text
+2024-11-09 14:56:46,619 - INFO - Processing text with Gemini...
+2024-11-09 14:56:46,619 - INFO - Starting to process: data/pdfs/WMiddlefield_2120 2024.02.15 HODecision_Redacted.pdf
+2024-11-09 14:56:46,665 - INFO - Successfully extracted text from data/pdfs/WMiddlefield_2120 2024.02.15 HODecision_Redacted.pdf
+2024-11-09 14:56:46,856 - WARNING - Attempt 1 failed: 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+]
+2024-11-09 14:56:48,914 - WARNING - Attempt 2 failed: 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+]
+2024-11-09 14:56:52,974 - ERROR - Failed to process chunk 1: 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+]
+2024-11-09 14:56:52,975 - ERROR - Failed to process document data/pdfs/WMiddlefield_2120 2024.02.15 HODecision_Redacted.pdf: 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+]
+2024-11-09 14:56:52,975 - ERROR - Failed to process WMiddlefield_2120 2024.02.15 HODecision_Redacted.pdf: 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+]
+2024-11-09 14:56:52,975 - ERROR - Failed to process WMiddlefield_2120 2024.02.15 HODecision_Redacted.pdf: 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+]
+2024-11-09 14:56:52,977 - INFO - 
+Processing document: Whitney_2489 2024.07.09 Appeal Decision_Redacted.pdf
+2024-11-09 14:56:52,977 - INFO - Extracting text...
+2024-11-09 14:56:53,068 - INFO - Extracted 83657 characters of text
+2024-11-09 14:56:53,068 - INFO - Processing text with Gemini...
+2024-11-09 14:56:53,068 - INFO - Starting to process: data/pdfs/Whitney_2489 2024.07.09 Appeal Decision_Redacted.pdf
+2024-11-09 14:56:53,128 - INFO - Successfully extracted text from data/pdfs/Whitney_2489 2024.07.09 Appeal Decision_Redacted.pdf
+2024-11-09 14:56:53,178 - WARNING - Attempt 1 failed: 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+]
+2024-11-09 14:56:55,355 - WARNING - Attempt 2 failed: 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+]
+2024-11-09 14:57:18,312 - INFO - Successfully processed chunk 1/1
+2024-11-09 14:57:18,314 - INFO - Text processing complete
+2024-11-09 14:57:18,314 - INFO - Creating embeddings...
+2024-11-09 14:57:20,902 - INFO - Embeddings created successfully
+2024-11-09 14:57:20,902 - INFO - Adding to vector database...
+2024-11-09 14:57:20,903 - ERROR - Failed to process Whitney_2489 2024.07.09 Appeal Decision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Respondent failed to maintain the property in a habitable condition based on ten (10) separate conditions', 'Respondent calculated Petitioner’s Base Rent incorrectly when the Community Stabilization and Fair Rent Act (CSFRA) went into effect', 'Respondent imposed unlawful rent increases above the lawful Annual General Adjustment (AGA) permitted under the CSFRA in 2017, 2018, 2020, 2021, and 2023', 'Respondent improperly decreased Housing Services without a corresponding decrease in Rent based on the closure of the pool, the lack of an on-site property manager, because Petitioner had to change her parking space due to security issues, because Respondent failed to evict other tenants for nuisance behaviors, threatening safety, or committing crimes, and based on the closure of the laundry rooms'] which is a list in add.
+2024-11-09 14:57:20,903 - ERROR - Failed to process Whitney_2489 2024.07.09 Appeal Decision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Respondent failed to maintain the property in a habitable condition based on ten (10) separate conditions', 'Respondent calculated Petitioner’s Base Rent incorrectly when the Community Stabilization and Fair Rent Act (CSFRA) went into effect', 'Respondent imposed unlawful rent increases above the lawful Annual General Adjustment (AGA) permitted under the CSFRA in 2017, 2018, 2020, 2021, and 2023', 'Respondent improperly decreased Housing Services without a corresponding decrease in Rent based on the closure of the pool, the lack of an on-site property manager, because Petitioner had to change her parking space due to security issues, because Respondent failed to evict other tenants for nuisance behaviors, threatening safety, or committing crimes, and based on the closure of the laundry rooms'] which is a list in add.
+2024-11-09 14:57:20,903 - INFO - 
+Processing document: California_1556 2023.11.21 HODecision_Redacted.pdf
+2024-11-09 14:57:20,903 - INFO - Extracting text...
+2024-11-09 14:57:20,994 - INFO - Extracted 95217 characters of text
+2024-11-09 14:57:20,994 - INFO - Processing text with Gemini...
+2024-11-09 14:57:20,994 - INFO - Starting to process: data/pdfs/California_1556 2023.11.21 HODecision_Redacted.pdf
+2024-11-09 14:57:21,070 - INFO - Successfully extracted text from data/pdfs/California_1556 2023.11.21 HODecision_Redacted.pdf
+2024-11-09 14:57:21,127 - WARNING - Attempt 1 failed: 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+]
+2024-11-09 14:57:23,191 - WARNING - Attempt 2 failed: 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+]
+2024-11-09 14:57:27,320 - ERROR - Failed to process chunk 1: 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+]
+2024-11-09 14:57:27,321 - ERROR - Failed to process document data/pdfs/California_1556 2023.11.21 HODecision_Redacted.pdf: 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+]
+2024-11-09 14:57:27,321 - ERROR - Failed to process California_1556 2023.11.21 HODecision_Redacted.pdf: 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+]
+2024-11-09 14:57:27,321 - ERROR - Failed to process California_1556 2023.11.21 HODecision_Redacted.pdf: 400 API key expired. Please renew the API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+]
+2024-11-09 14:57:27,322 - INFO - 
+Processing document: Central_511 2024.02.27 AppealDecision_Redacted.pdf
+2024-11-09 14:57:27,322 - INFO - Extracting text...
+2024-11-09 14:57:27,361 - INFO - Extracted 19293 characters of text
+2024-11-09 14:57:27,361 - INFO - Processing text with Gemini...
+2024-11-09 14:57:27,361 - INFO - Starting to process: data/pdfs/Central_511 2024.02.27 AppealDecision_Redacted.pdf
+2024-11-09 14:57:27,383 - INFO - Successfully extracted text from data/pdfs/Central_511 2024.02.27 AppealDecision_Redacted.pdf
+2024-11-09 14:57:36,633 - INFO - Successfully processed chunk 1/1
+2024-11-09 14:57:36,633 - INFO - Text processing complete
+2024-11-09 14:57:36,634 - INFO - Creating embeddings...
+2024-11-09 14:57:36,715 - INFO - Embeddings created successfully
+2024-11-09 14:57:36,715 - INFO - Adding to vector database...
+2024-11-09 14:57:36,715 - ERROR - Failed to process Central_511 2024.02.27 AppealDecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Undue tenant hardship based on household income not exceeding 100% of the median household income for Santa Clara County'] which is a list in add.
+2024-11-09 14:57:36,715 - ERROR - Failed to process Central_511 2024.02.27 AppealDecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Undue tenant hardship based on household income not exceeding 100% of the median household income for Santa Clara County'] which is a list in add.
+2024-11-09 14:57:36,715 - INFO - 
+Processing document: Montecito_1375 2022.12.14 HODecision_Redacted.pdf
+2024-11-09 14:57:36,715 - INFO - Extracting text...
+2024-11-09 14:57:36,745 - INFO - Extracted 27455 characters of text
+2024-11-09 14:57:36,745 - INFO - Processing text with Gemini...
+2024-11-09 14:57:36,745 - INFO - Starting to process: data/pdfs/Montecito_1375 2022.12.14 HODecision_Redacted.pdf
+2024-11-09 14:57:36,771 - INFO - Successfully extracted text from data/pdfs/Montecito_1375 2022.12.14 HODecision_Redacted.pdf
+2024-11-09 14:57:43,395 - INFO - Successfully processed chunk 1/1
+2024-11-09 14:57:43,396 - INFO - Text processing complete
+2024-11-09 14:57:43,396 - INFO - Creating embeddings...
+2024-11-09 14:57:43,466 - INFO - Embeddings created successfully
+2024-11-09 14:57:43,466 - INFO - Adding to vector database...
+2024-11-09 14:57:43,466 - ERROR - Failed to process Montecito_1375 2022.12.14 HODecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Unlawful rent increase due to miscalculation of Base Rent', 'Unlawful rent increase without proper notice'] which is a list in add.
+2024-11-09 14:57:43,466 - ERROR - Failed to process Montecito_1375 2022.12.14 HODecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Unlawful rent increase due to miscalculation of Base Rent', 'Unlawful rent increase without proper notice'] which is a list in add.
+2024-11-09 14:57:43,466 - INFO - 
+Processing document: Continental_707 2023.05.19 HODecision_Redacted.pdf
+2024-11-09 14:57:43,466 - INFO - Extracting text...
+2024-11-09 14:57:43,518 - INFO - Extracted 47412 characters of text
+2024-11-09 14:57:43,518 - INFO - Processing text with Gemini...
+2024-11-09 14:57:43,518 - INFO - Starting to process: data/pdfs/Continental_707 2023.05.19 HODecision_Redacted.pdf
+2024-11-09 14:57:43,561 - INFO - Successfully extracted text from data/pdfs/Continental_707 2023.05.19 HODecision_Redacted.pdf
+2024-11-09 14:57:57,124 - WARNING - Attempt 1 failed: Expecting value: line 1 column 1 (char 0)
+2024-11-09 14:58:04,749 - WARNING - Attempt 2 failed: Expecting value: line 1 column 1 (char 0)
+2024-11-09 14:58:08,838 - ERROR - Failed to process chunk 1: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:08,839 - ERROR - Failed to process document data/pdfs/Continental_707 2023.05.19 HODecision_Redacted.pdf: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:08,839 - ERROR - Failed to process Continental_707 2023.05.19 HODecision_Redacted.pdf: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:08,839 - ERROR - Failed to process Continental_707 2023.05.19 HODecision_Redacted.pdf: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:08,839 - INFO - 
+Processing document: Montecito_1260 2023.10.24 AppealDecision_Redacted.pdf
+2024-11-09 14:58:08,840 - INFO - Extracting text...
+2024-11-09 14:58:08,886 - INFO - Extracted 27945 characters of text
+2024-11-09 14:58:08,886 - INFO - Processing text with Gemini...
+2024-11-09 14:58:08,886 - INFO - Starting to process: data/pdfs/Montecito_1260 2023.10.24 AppealDecision_Redacted.pdf
+2024-11-09 14:58:08,914 - INFO - Successfully extracted text from data/pdfs/Montecito_1260 2023.10.24 AppealDecision_Redacted.pdf
+2024-11-09 14:58:09,038 - WARNING - Attempt 1 failed: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:11,184 - WARNING - Attempt 2 failed: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:15,247 - ERROR - Failed to process chunk 1: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:15,247 - ERROR - Failed to process document data/pdfs/Montecito_1260 2023.10.24 AppealDecision_Redacted.pdf: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:15,248 - ERROR - Failed to process Montecito_1260 2023.10.24 AppealDecision_Redacted.pdf: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:15,248 - ERROR - Failed to process Montecito_1260 2023.10.24 AppealDecision_Redacted.pdf: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:15,248 - INFO - 
+Processing document: Montecito_1260 2023.06.30 HODecision_Redacted.pdf
+2024-11-09 14:58:15,248 - INFO - Extracting text...
+2024-11-09 14:58:15,318 - INFO - Extracted 44618 characters of text
+2024-11-09 14:58:15,318 - INFO - Processing text with Gemini...
+2024-11-09 14:58:15,318 - INFO - Starting to process: data/pdfs/Montecito_1260 2023.06.30 HODecision_Redacted.pdf
+2024-11-09 14:58:15,356 - INFO - Successfully extracted text from data/pdfs/Montecito_1260 2023.06.30 HODecision_Redacted.pdf
+2024-11-09 14:58:15,449 - WARNING - Attempt 1 failed: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:17,513 - WARNING - Attempt 2 failed: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:21,585 - ERROR - Failed to process chunk 1: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:21,586 - ERROR - Failed to process document data/pdfs/Montecito_1260 2023.06.30 HODecision_Redacted.pdf: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:21,587 - ERROR - Failed to process Montecito_1260 2023.06.30 HODecision_Redacted.pdf: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:21,587 - ERROR - Failed to process Montecito_1260 2023.06.30 HODecision_Redacted.pdf: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:58:21,587 - INFO - 
+Processing document: California_2200 2024.04.24 HODecision_Redacted.pdf
+2024-11-09 14:58:21,587 - INFO - Extracting text...
+2024-11-09 14:58:21,658 - INFO - Extracted 56221 characters of text
+2024-11-09 14:58:21,658 - INFO - Processing text with Gemini...
+2024-11-09 14:58:21,658 - INFO - Starting to process: data/pdfs/California_2200 2024.04.24 HODecision_Redacted.pdf
+2024-11-09 14:58:21,700 - INFO - Successfully extracted text from data/pdfs/California_2200 2024.04.24 HODecision_Redacted.pdf
+2024-11-09 14:58:34,499 - INFO - Successfully processed chunk 1/1
+2024-11-09 14:58:34,500 - INFO - Text processing complete
+2024-11-09 14:58:34,501 - INFO - Creating embeddings...
+2024-11-09 14:58:34,960 - INFO - Embeddings created successfully
+2024-11-09 14:58:34,961 - INFO - Adding to vector database...
+2024-11-09 14:58:34,961 - ERROR - Failed to process California_2200 2024.04.24 HODecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Unlawful rent charged', 'Failure to maintain a habitable premises/failure to repair causing a reduction in housing services'] which is a list in add.
+2024-11-09 14:58:34,961 - ERROR - Failed to process California_2200 2024.04.24 HODecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Unlawful rent charged', 'Failure to maintain a habitable premises/failure to repair causing a reduction in housing services'] which is a list in add.
+2024-11-09 14:58:34,961 - INFO - 
+Processing document: Wright_1725 2023.10.12 AppealDecision_Redacted.pdf
+2024-11-09 14:58:34,961 - INFO - Extracting text...
+2024-11-09 14:58:34,977 - INFO - Extracted 16909 characters of text
+2024-11-09 14:58:34,977 - INFO - Processing text with Gemini...
+2024-11-09 14:58:34,977 - INFO - Starting to process: data/pdfs/Wright_1725 2023.10.12 AppealDecision_Redacted.pdf
+2024-11-09 14:58:34,993 - INFO - Successfully extracted text from data/pdfs/Wright_1725 2023.10.12 AppealDecision_Redacted.pdf
+2024-11-09 14:58:43,877 - INFO - Successfully processed chunk 1/1
+2024-11-09 14:58:43,878 - INFO - Text processing complete
+2024-11-09 14:58:43,878 - INFO - Creating embeddings...
+2024-11-09 14:58:44,066 - INFO - Embeddings created successfully
+2024-11-09 14:58:44,066 - INFO - Adding to vector database...
+2024-11-09 14:58:44,066 - ERROR - Failed to process Wright_1725 2023.10.12 AppealDecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Lack of hot water at the Property, in violation of the Community Stabilization and Fair Rent Act (CSFRA)'] which is a list in add.
+2024-11-09 14:58:44,066 - ERROR - Failed to process Wright_1725 2023.10.12 AppealDecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Lack of hot water at the Property, in violation of the Community Stabilization and Fair Rent Act (CSFRA)'] which is a list in add.
+2024-11-09 14:58:44,067 - INFO - 
+Processing document: NShoreline_750 2022.12.08 HODecision_Redacted.pdf
+2024-11-09 14:58:44,067 - INFO - Extracting text...
+2024-11-09 14:58:44,097 - INFO - Extracted 16503 characters of text
+2024-11-09 14:58:44,097 - INFO - Processing text with Gemini...
+2024-11-09 14:58:44,097 - INFO - Starting to process: data/pdfs/NShoreline_750 2022.12.08 HODecision_Redacted.pdf
+2024-11-09 14:58:44,119 - INFO - Successfully extracted text from data/pdfs/NShoreline_750 2022.12.08 HODecision_Redacted.pdf
+2024-11-09 14:58:48,881 - WARNING - Attempt 1 failed: Expecting value: line 1 column 1 (char 0)
+2024-11-09 14:58:56,410 - INFO - Successfully processed chunk 1/1
+2024-11-09 14:58:56,410 - INFO - Text processing complete
+2024-11-09 14:58:56,411 - INFO - Creating embeddings...
+2024-11-09 14:58:56,748 - INFO - Embeddings created successfully
+2024-11-09 14:58:56,749 - INFO - Adding to vector database...
+2024-11-09 14:58:56,749 - ERROR - Failed to process NShoreline_750 2022.12.08 HODecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Undue hardship due to banked rent increases'] which is a list in add.
+2024-11-09 14:58:56,749 - ERROR - Failed to process NShoreline_750 2022.12.08 HODecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Undue hardship due to banked rent increases'] which is a list in add.
+2024-11-09 14:58:56,749 - INFO - 
+Processing document: Wentworth_1084 2024.05.06 HODecision_Redacted.pdf
+2024-11-09 14:58:56,749 - INFO - Extracting text...
+2024-11-09 14:58:56,796 - INFO - Extracted 51595 characters of text
+2024-11-09 14:58:56,796 - INFO - Processing text with Gemini...
+2024-11-09 14:58:56,796 - INFO - Starting to process: data/pdfs/Wentworth_1084 2024.05.06 HODecision_Redacted.pdf
+2024-11-09 14:58:56,844 - INFO - Successfully extracted text from data/pdfs/Wentworth_1084 2024.05.06 HODecision_Redacted.pdf
+2024-11-09 14:59:04,268 - INFO - Successfully processed chunk 1/1
+2024-11-09 14:59:04,268 - INFO - Text processing complete
+2024-11-09 14:59:04,268 - INFO - Creating embeddings...
+2024-11-09 14:59:04,388 - INFO - Embeddings created successfully
+2024-11-09 14:59:04,388 - INFO - Adding to vector database...
+2024-11-09 14:59:04,389 - ERROR - Failed to process Wentworth_1084 2024.05.06 HODecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['failure to maintain a habitable premises/failure to repair causing a reduction in housing services', 'unlawful rent'] which is a list in add.
+2024-11-09 14:59:04,389 - ERROR - Failed to process Wentworth_1084 2024.05.06 HODecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['failure to maintain a habitable premises/failure to repair causing a reduction in housing services', 'unlawful rent'] which is a list in add.
+2024-11-09 14:59:04,389 - INFO - 
+Processing document: Crestview_1050 2023.08.31 HODecision_Redacted.pdf
+2024-11-09 14:59:04,389 - INFO - Extracting text...
+2024-11-09 14:59:04,470 - INFO - Extracted 71095 characters of text
+2024-11-09 14:59:04,470 - INFO - Processing text with Gemini...
+2024-11-09 14:59:04,470 - INFO - Starting to process: data/pdfs/Crestview_1050 2023.08.31 HODecision_Redacted.pdf
+2024-11-09 14:59:04,541 - INFO - Successfully extracted text from data/pdfs/Crestview_1050 2023.08.31 HODecision_Redacted.pdf
+2024-11-09 14:59:04,615 - WARNING - Attempt 1 failed: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:59:06,677 - WARNING - Attempt 2 failed: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:59:10,845 - ERROR - Failed to process chunk 1: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:59:10,846 - ERROR - Failed to process document data/pdfs/Crestview_1050 2023.08.31 HODecision_Redacted.pdf: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:59:10,846 - ERROR - Failed to process Crestview_1050 2023.08.31 HODecision_Redacted.pdf: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:59:10,846 - ERROR - Failed to process Crestview_1050 2023.08.31 HODecision_Redacted.pdf: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:59:10,847 - INFO - 
+Processing document: Del Medio_141 2022.11.18 HODecision_Redacted.pdf
+2024-11-09 14:59:10,847 - INFO - Extracting text...
+2024-11-09 14:59:10,878 - INFO - Extracted 24182 characters of text
+2024-11-09 14:59:10,878 - INFO - Processing text with Gemini...
+2024-11-09 14:59:10,878 - INFO - Starting to process: data/pdfs/Del Medio_141 2022.11.18 HODecision_Redacted.pdf
+2024-11-09 14:59:10,905 - INFO - Successfully extracted text from data/pdfs/Del Medio_141 2022.11.18 HODecision_Redacted.pdf
+2024-11-09 14:59:11,085 - WARNING - Attempt 1 failed: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:59:13,143 - WARNING - Attempt 2 failed: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:59:17,223 - ERROR - Failed to process chunk 1: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:59:17,224 - ERROR - Failed to process document data/pdfs/Del Medio_141 2022.11.18 HODecision_Redacted.pdf: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:59:17,224 - ERROR - Failed to process Del Medio_141 2022.11.18 HODecision_Redacted.pdf: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:59:17,224 - ERROR - Failed to process Del Medio_141 2022.11.18 HODecision_Redacted.pdf: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:59:17,224 - INFO - 
+Processing document: Continental_707 2024.03.04 HOCPDecision_Redacted.pdf
+2024-11-09 14:59:17,224 - INFO - Extracting text...
+2024-11-09 14:59:17,302 - INFO - Extracted 52576 characters of text
+2024-11-09 14:59:17,302 - INFO - Processing text with Gemini...
+2024-11-09 14:59:17,302 - INFO - Starting to process: data/pdfs/Continental_707 2024.03.04 HOCPDecision_Redacted.pdf
+2024-11-09 14:59:17,353 - INFO - Successfully extracted text from data/pdfs/Continental_707 2024.03.04 HOCPDecision_Redacted.pdf
+2024-11-09 14:59:17,421 - WARNING - Attempt 1 failed: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:59:19,488 - WARNING - Attempt 2 failed: 429 Resource has been exhausted (e.g. check quota).
+2024-11-09 14:59:30,913 - INFO - Successfully processed chunk 1/1
+2024-11-09 14:59:30,914 - INFO - Text processing complete
+2024-11-09 14:59:30,914 - INFO - Creating embeddings...
+2024-11-09 14:59:31,384 - INFO - Embeddings created successfully
+2024-11-09 14:59:31,385 - INFO - Adding to vector database...
+2024-11-09 14:59:31,385 - ERROR - Failed to process Continental_707 2024.03.04 HOCPDecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Charging monthly utilities above the Base Rent level', 'Delayed refund issuance', 'Non-issuance of rent overpayment credits', 'Failure to roll back rent to the Base Rent level', 'Untimely refund of the security deposit'] which is a list in add.
+2024-11-09 14:59:31,385 - ERROR - Failed to process Continental_707 2024.03.04 HOCPDecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Charging monthly utilities above the Base Rent level', 'Delayed refund issuance', 'Non-issuance of rent overpayment credits', 'Failure to roll back rent to the Base Rent level', 'Untimely refund of the security deposit'] which is a list in add.
+2024-11-09 14:59:31,385 - INFO - 
+Processing document: WMiddlefield_2120 2024.04.26 AppealDecision_Redacted.pdf
+2024-11-09 14:59:31,385 - INFO - Extracting text...
+2024-11-09 14:59:31,421 - INFO - Extracted 41462 characters of text
+2024-11-09 14:59:31,422 - INFO - Processing text with Gemini...
+2024-11-09 14:59:31,422 - INFO - Starting to process: data/pdfs/WMiddlefield_2120 2024.04.26 AppealDecision_Redacted.pdf
+2024-11-09 14:59:31,456 - INFO - Successfully extracted text from data/pdfs/WMiddlefield_2120 2024.04.26 AppealDecision_Redacted.pdf
+2024-11-09 14:59:39,977 - INFO - Successfully processed chunk 1/1
+2024-11-09 14:59:39,978 - INFO - Text processing complete
+2024-11-09 14:59:39,979 - INFO - Creating embeddings...
+2024-11-09 14:59:40,117 - INFO - Embeddings created successfully
+2024-11-09 14:59:40,117 - INFO - Adding to vector database...
+2024-11-09 14:59:40,117 - ERROR - Failed to process WMiddlefield_2120 2024.04.26 AppealDecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Respondent began charging Petitioner for Utility Charges more than a year after Petitioner moved in', 'Respondent began charging Petition for renters’ insurance', 'Error in calculation of Base Rent due to concession in lease', 'Improperly reduced Housing Services based on trash bin blocking Petitioner’s assigned parking spot, the condition and unavailability of the laundry room, the unavailability/closure of the pool due to a broken gate, and a tenant portal for reporting maintenance issues that did not allow for communication between the property managers and tenants after the initial request', 'Failed to maintain the property in a habitable condition based on reglazing peeling off the sink, shower and bathtub, a leaking sink faucet and toilet, and overflowing of trash attracting vermin', '2021 Annual General Adjustment (AGA) was improperly imposed'] which is a list in add.
+2024-11-09 14:59:40,117 - ERROR - Failed to process WMiddlefield_2120 2024.04.26 AppealDecision_Redacted.pdf: Expected metadata value to be a str, int, float or bool, got ['Respondent began charging Petitioner for Utility Charges more than a year after Petitioner moved in', 'Respondent began charging Petition for renters’ insurance', 'Error in calculation of Base Rent due to concession in lease', 'Improperly reduced Housing Services based on trash bin blocking Petitioner’s assigned parking spot, the condition and unavailability of the laundry room, the unavailability/closure of the pool due to a broken gate, and a tenant portal for reporting maintenance issues that did not allow for communication between the property managers and tenants after the initial request', 'Failed to maintain the property in a habitable condition based on reglazing peeling off the sink, shower and bathtub, a leaking sink faucet and toilet, and overflowing of trash attracting vermin', '2021 Annual General Adjustment (AGA) was improperly imposed'] which is a list in add.
+2024-11-09 14:59:40,118 - INFO - 
+Processing document: Escuela_222 2024.01.25 AppealDecision_Redacted.pdf
+2024-11-09 14:59:40,118 - INFO - Extracting text...
+2024-11-09 14:59:40,140 - INFO - Extracted 25523 characters of text
+2024-11-09 14:59:40,140 - INFO - Processing text with Gemini...
+2024-11-09 14:59:40,140 - INFO - Starting to process: data/pdfs/Escuela_222 2024.01.25 AppealDecision_Redacted.pdf
+2024-11-09 14:59:40,162 - INFO - Successfully extracted text from data/pdfs/Escuela_222 2024.01.25 AppealDecision_Redacted.pdf
+2024-11-09 14:59:46,977 - WARNING - Attempt 1 failed: Expecting value: line 1 column 1 (char 0)
