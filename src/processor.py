@@ -198,10 +198,165 @@ import time
 
 logger = logging.getLogger(__name__)
 
+# final 2 - 5 must sentences but no temp control
+# class LegalDocumentProcessor:
+#     def __init__(self, api_key: str):
+#         genai.configure(api_key=api_key)
+#         self.model = genai.GenerativeModel('gemini-pro')
+
+#     def _clean_text(self, text: str) -> str:
+#         """Clean text and limit to reasonable length."""
+#         text = " ".join(text.split())
+#         text = "".join(char for char in text if char.isprintable() or char in ['\n', '\t'])
+#         if len(text) > 30000:
+#             text = text[:30000] + "..."
+#         return text
+
+#     def _create_summary_prompt(self, text: str, section: str) -> str:
+#         """Create a prompt that enforces a concise 5-sentences limit."""
+#         return f"""Analyze this legal document and provide a VERY CONCISE summary of {section}.
+        
+#         Document text:
+#         {text}
+        
+#         IMPORTANT RULES:
+#         1. Summary MUST be 5 sentences or less
+#         2. Focus ONLY on the most crucial points
+#         3. Use clear, direct language
+#         4. Avoid repetition or unnecessary details
+        
+#         Format: Write a concise paragraph with maximum 5 sentences."""
+
+#     def process_document(self, pdf_path: str) -> Dict:
+#         """Process document with strictly limited summary lengths."""
+#         logger.info(f"Processing document: {pdf_path}")
+        
+#         try:
+#             # Extract text
+#             text = self._extract_text_from_pdf(pdf_path)
+            
+#             # Create detailed extraction prompt
+#             prompt = f"""Analyze this legal document and provide structured information and VERY CONCISE summaries (max 5 sentences each).
+
+#             Required Information:
+#             1. Basic Details:
+#                - Case number
+#                - Petitioner name
+#                - Respondent name
+#                - City/location
+            
+#             2. Concise Summaries (MAXIMUM 5 SENTENCES EACH):
+#                - Petitioner's main issues and arguments
+#                - Respondent's main arguments
+#                - Key hearing points
+#                - Final decision
+            
+#             3. Appeal Information:
+#                - Is this an appeal? (yes/no)
+#                - Appeal subject (if applicable)
+#                - Appeal decision (if applicable)
+
+#             Document text:
+#             {text}
+
+#             IMPORTANT: Each summary section MUST NOT exceed 5 sentences.
+            
+#             Provide response in JSON format with these exact fields:
+#             {{
+#                 "case_number": "string",
+#                 "petitioner_name": "string",
+#                 "respondent_name": "string",
+#                 "city": "string",
+#                 "petitioner_issues_summary": "string (max 5 sentences)",
+#                 "respondent_issues_summary": "string (max 5 sentences)",
+#                 "hearing_points_summary": "string (max 5 sentences)",
+#                 "final_decision_summary": "string (max 5 sentences)",
+#                 "is_appeal": boolean,
+#                 "appeal_subject": "string or null",
+#                 "appeal_decision": "string or null"
+#             }}"""
+
+#             # Get response from model
+#             response = self.model.generate_content(prompt)
+#             content = response.text.strip()
+            
+#             # Clean up JSON response
+#             if '```json' in content:
+#                 content = content.split('```json')[1].split('```')[0].strip()
+#             elif '```' in content:
+#                 content = content.split('```')[1].strip()
+
+#             # Parse response
+#             try:
+#                 result = json.loads(content)
+#             except json.JSONDecodeError:
+#                 logger.error("Failed to parse JSON response")
+#                 return self._create_error_response(pdf_path)
+
+#             # Enforce length limits on summaries
+#             for key in ['petitioner_issues_summary', 'respondent_issues_summary', 
+#                        'hearing_points_summary', 'final_decision_summary']:
+#                 if key in result:
+#                     lines = result[key].split('\n')
+#                     result[key] = '\n'.join(lines[:5])  # Limit to 5 lines
+
+#             # Add filename
+#             result['filename'] = os.path.basename(pdf_path)
+            
+#             return result
+
+#         except Exception as e:
+#             logger.error(f"Failed to process document: {str(e)}")
+#             return self._create_error_response(pdf_path)
+
+#     def _extract_text_from_pdf(self, pdf_path: str) -> str:
+#         """Extract text from PDF with error handling."""
+#         try:
+#             with fitz.open(pdf_path) as doc:
+#                 text = ""
+#                 for page in doc:
+#                     text += page.get_text() + "\n"
+#                 return self._clean_text(text)
+#         except Exception as e:
+#             logger.error(f"Failed to extract text from PDF: {str(e)}")
+#             raise
+
+#     def _create_error_response(self, pdf_path: str) -> Dict:
+#         """Create a structured error response."""
+#         return {
+#             'filename': os.path.basename(pdf_path),
+#             'case_number': 'Error processing document',
+#             'petitioner_name': 'Not available',
+#             'respondent_name': 'Not available',
+#             'city': 'Not available',
+#             'petitioner_issues_summary': 'Failed to extract summary',
+#             'respondent_issues_summary': 'Failed to extract summary',
+#             'hearing_points_summary': 'Failed to extract summary',
+#             'final_decision_summary': 'Failed to extract summary',
+#             'is_appeal': False,
+#             'appeal_subject': None,
+#             'appeal_decision': None
+#         }
+
+#     def ensure_summary_length(self, summary: str, max_lines: int = 5) -> str:
+#         """Ensure summary doesn't exceed the specified number of lines."""
+#         lines = summary.split('\n')
+#         if len(lines) > max_lines:
+#             return '\n'.join(lines[:max_lines])
+#         return summary
+
+#5 flexible sentences with temp control
+
 class LegalDocumentProcessor:
     def __init__(self, api_key: str):
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel('gemini-pro')
+        # Set up model with lower temperature for more consistent outputs
+        generation_config = {
+            "temperature": 0.1,  # Lower temperature for more consistent output
+            "top_p": 0.8,
+            "top_k": 40
+        }
+        self.model = genai.GenerativeModel('gemini-pro', generation_config=generation_config)
 
     def _clean_text(self, text: str) -> str:
         """Clean text and limit to reasonable length."""
@@ -210,103 +365,6 @@ class LegalDocumentProcessor:
         if len(text) > 30000:
             text = text[:30000] + "..."
         return text
-
-    def _create_summary_prompt(self, text: str, section: str) -> str:
-        """Create a prompt that enforces a concise 5-sentences limit."""
-        return f"""Analyze this legal document and provide a VERY CONCISE summary of {section}.
-        
-        Document text:
-        {text}
-        
-        IMPORTANT RULES:
-        1. Summary MUST be 5 sentences or less
-        2. Focus ONLY on the most crucial points
-        3. Use clear, direct language
-        4. Avoid repetition or unnecessary details
-        
-        Format: Write a concise paragraph with maximum 5 sentences."""
-
-    def process_document(self, pdf_path: str) -> Dict:
-        """Process document with strictly limited summary lengths."""
-        logger.info(f"Processing document: {pdf_path}")
-        
-        try:
-            # Extract text
-            text = self._extract_text_from_pdf(pdf_path)
-            
-            # Create detailed extraction prompt
-            prompt = f"""Analyze this legal document and provide structured information and VERY CONCISE summaries (max 5 sentences each).
-
-            Required Information:
-            1. Basic Details:
-               - Case number
-               - Petitioner name
-               - Respondent name
-               - City/location
-            
-            2. Concise Summaries (MAXIMUM 5 SENTENCES EACH):
-               - Petitioner's main issues and arguments
-               - Respondent's main arguments
-               - Key hearing points
-               - Final decision
-            
-            3. Appeal Information:
-               - Is this an appeal? (yes/no)
-               - Appeal subject (if applicable)
-               - Appeal decision (if applicable)
-
-            Document text:
-            {text}
-
-            IMPORTANT: Each summary section MUST NOT exceed 5 sentences.
-            
-            Provide response in JSON format with these exact fields:
-            {{
-                "case_number": "string",
-                "petitioner_name": "string",
-                "respondent_name": "string",
-                "city": "string",
-                "petitioner_issues_summary": "string (max 5 sentences)",
-                "respondent_issues_summary": "string (max 5 sentences)",
-                "hearing_points_summary": "string (max 5 sentences)",
-                "final_decision_summary": "string (max 5 sentences)",
-                "is_appeal": boolean,
-                "appeal_subject": "string or null",
-                "appeal_decision": "string or null"
-            }}"""
-
-            # Get response from model
-            response = self.model.generate_content(prompt)
-            content = response.text.strip()
-            
-            # Clean up JSON response
-            if '```json' in content:
-                content = content.split('```json')[1].split('```')[0].strip()
-            elif '```' in content:
-                content = content.split('```')[1].strip()
-
-            # Parse response
-            try:
-                result = json.loads(content)
-            except json.JSONDecodeError:
-                logger.error("Failed to parse JSON response")
-                return self._create_error_response(pdf_path)
-
-            # Enforce length limits on summaries
-            for key in ['petitioner_issues_summary', 'respondent_issues_summary', 
-                       'hearing_points_summary', 'final_decision_summary']:
-                if key in result:
-                    lines = result[key].split('\n')
-                    result[key] = '\n'.join(lines[:5])  # Limit to 5 lines
-
-            # Add filename
-            result['filename'] = os.path.basename(pdf_path)
-            
-            return result
-
-        except Exception as e:
-            logger.error(f"Failed to process document: {str(e)}")
-            return self._create_error_response(pdf_path)
 
     def _extract_text_from_pdf(self, pdf_path: str) -> str:
         """Extract text from PDF with error handling."""
@@ -319,6 +377,110 @@ class LegalDocumentProcessor:
         except Exception as e:
             logger.error(f"Failed to extract text from PDF: {str(e)}")
             raise
+
+    def process_document(self, pdf_path: str) -> Dict:
+        """Process document with consistent summary generation."""
+        logger.info(f"Processing document: {pdf_path}")
+        
+        try:
+            # Extract text
+            text = self._extract_text_from_pdf(pdf_path)
+            
+            # Create structured extraction prompt
+            prompt = f"""Analyze this legal document and extract information following these exact guidelines:
+
+            1. BASIC INFORMATION - Extract exactly:
+               - Case number (format: alphanumeric identifier)
+               - Petitioner name (full name)
+               - Respondent name (full name)
+               - City/location (city name only)
+
+            2. SUMMARIES - For each section below, provide approximately 5 sentences that capture the essential information:
+
+               A. Petitioner's Issues:
+               - State the main legal claims or grievances
+               - Include key arguments presented
+               - Mention specific relief sought
+               - Focus on factual claims only
+               
+               B. Respondent's Position:
+               - State main counter-arguments
+               - Include key defense points
+               - Mention specific responses to petitioner's claims
+               - Focus on factual rebuttals only
+               
+               C. Hearing Points:
+               - List main evidence presented
+               - Include key testimony highlights
+               - Note important legal arguments discussed
+               - Focus on factual discussions only
+               
+               D. Final Decision:
+               - State the main ruling clearly
+               - Include key reasoning points
+               - Mention specific orders given
+               - Focus on actual decision only
+
+            3. APPEAL INFORMATION:
+               - Is this an appeal case? (true/false only)
+               - If yes, state what is the appeal about
+               - If yes, state appeal decision
+
+            Document text:
+            {text}
+
+            Return ONLY a JSON object with these exact fields. Each summary should be a single paragraph:
+            {{
+                "case_number": "string",
+                "petitioner_name": "string",
+                "respondent_name": "string",
+                "city": "string",
+                "petitioner_issues_summary": "string (~5 sentences)",
+                "respondent_issues_summary": "string (~5 sentences)",
+                "hearing_points_summary": "string (~5 sentences)",
+                "final_decision_summary": "string (~5 sentences)",
+                "is_appeal": boolean,
+                "appeal_subject": "string or null (~5 sentences)",
+                "appeal_decision": "string or null (~5 sentences)"
+            }}"""
+
+            # Get response from model
+            response = self.model.generate_content(prompt)
+            content = response.text.strip()
+            
+            # Clean up JSON response
+            if '```json' in content:
+                content = content.split('```json')[1].split('```')[0].strip()
+            elif '```' in content:
+                content = content.split('```')[1].strip()
+
+            # Parse JSON with error handling
+            try:
+                result = json.loads(content)
+                logger.info("Successfully parsed JSON response")
+            except json.JSONDecodeError as e:
+                logger.error(f"JSON parsing error: {str(e)}")
+                return self._create_error_response(pdf_path)
+
+            # Add filename to result
+            result['filename'] = os.path.basename(pdf_path)
+            
+            # Validate and clean summaries
+            summary_fields = ['petitioner_issues_summary', 'respondent_issues_summary', 
+                            'hearing_points_summary', 'final_decision_summary']
+            
+            for field in summary_fields:
+                if field in result:
+                    # Clean up any extra whitespace or formatting
+                    summary = result[field].strip()
+                    summary = ' '.join(summary.split())  # Normalize whitespace
+                    result[field] = summary
+
+            return result
+
+        except Exception as e:
+            logger.error(f"Failed to process document: {str(e)}")
+            return self._create_error_response(pdf_path)
 
     def _create_error_response(self, pdf_path: str) -> Dict:
         """Create a structured error response."""
@@ -336,10 +498,3 @@ class LegalDocumentProcessor:
             'appeal_subject': None,
             'appeal_decision': None
         }
-
-    def ensure_summary_length(self, summary: str, max_lines: int = 5) -> str:
-        """Ensure summary doesn't exceed the specified number of lines."""
-        lines = summary.split('\n')
-        if len(lines) > max_lines:
-            return '\n'.join(lines[:max_lines])
-        return summary
